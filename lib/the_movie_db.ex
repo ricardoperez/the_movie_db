@@ -42,7 +42,7 @@ defmodule TheMovieDb do
   end
 
   defp parse_body(%{body: body, status_code: 200}) do
-     body |> Poison.decode!
+     Poison.decode!(body)
   end
 
   defp parse_body(%{status_code: _}) do
