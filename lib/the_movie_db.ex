@@ -8,7 +8,7 @@ defmodule TheMovieDb do
 
   ## Example
 
-      iex> search("Jack Reacher")
+      iex> TheMovieDb.search("Jack Reacher")
       %{"page" => 1,
         "results" => [%{"adult" => false,
         "backdrop_path" => "/ezXodpP429qK0Av89pVNlaXWJkQ.jpg",
