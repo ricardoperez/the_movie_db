@@ -37,7 +37,16 @@ defmodule TheMovieDb.Movies do
   defp present_movie_with_actor(movie, credits) do
     %{
       original_title: movie["original_title"],
-      actors: credits["cast"]
+      actors: Enum.map(credits["cast"], &present_person/1)
+    }
+  end
+
+  defp present_person(person) do
+    %{
+      order: person["order"],
+      name: person["name"],
+      character: person["character"],
+      image: person["profile_path"]
     }
   end
 
