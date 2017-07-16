@@ -17,7 +17,15 @@ defmodule TheMovieDb do
   """
   def search(query) do
     path = "#{api_version()}/search/movie"
-    query_string = URI.encode_query(%{api_key: api_key(), query: query})
+    make_request(path, %{query: query})
+  end
+
+  @spec make_request(String.t, map) :: map
+  def make_request(path, params \\ %{}) do
+    query_string =
+      params
+      |> Map.merge(%{api_key: api_key()})
+      |> URI.encode_query()
 
     api_url()
     |> URI.merge("#{path}?#{query_string}")

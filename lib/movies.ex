@@ -49,18 +49,4 @@ defmodule TheMovieDb.Movies do
       image: person["profile_path"]
     }
   end
-
-  defp make_request(path) do
-    query_string = URI.encode_query(%{api_key: api_key()})
-
-    api_url()
-    |> URI.merge("#{path}?#{query_string}")
-    |> to_string
-    |> HTTPoison.get!
-    |> parse_response
-  end
-
-  defp parse_response(%{body: body}) do
-     Poison.decode!(body)
-  end
 end
